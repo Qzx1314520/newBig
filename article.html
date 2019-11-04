@@ -80,8 +80,12 @@
         下一篇： <a href="#">世界第一个可以玩游戏的马桶、世界上第一个可以玩游戏的茶杯</a>
       </div>
 
-      <form action="" class="comment_form" id="commentForm">
-
+      <form  class="comment_form" id="commentForm">
+          <div class="form_group">
+              <label>您的ID为:</label>
+    
+              <input type="text" placeholder="" class="comment_name" name="articleId">
+          </div>
         <div class="form_group">
           <label>用户名：</label>
 
@@ -95,7 +99,9 @@
 
         <div class="form_group">
 
-          <input type="submit" name="articleId" value="评 论" class="comment_sub"></div>
+          <input type="submit" name="" value="评 论" class="comment_sub">
+          <!-- <input type="hidden" id="articleId"> -->
+        </div>
 
       </form>
 
@@ -104,34 +110,10 @@
       </div>
 
       <div class="comment_list_con">
-        <div class="comment_detail_list">
-          <div class="person_pic fl">乔</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">段</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">虚</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">王</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
+          <ul class="content_list comment_list" id="latest_commentBox">
+
+
+          </ul>
       </div>
     </div>
     <div class="right_con setfl">
@@ -216,21 +198,20 @@
     // 发表评论
     $('#commentForm').on('submit', function () {
       var formData = $(this).serialize()
-      console.log(typeof formData)
+      // console.log(typeof formData)
+      console.log(formData);
+      
       $.ajax({
         url: 'http://47.111.184.55:8888/api/v1/index/post_comment',
         type: 'post',
         data: formData,
         success: function (data) {
-          alert('提交成功')
           console.log(data);
-          console.log(typeof data)
-          location.reload()
-
         },
         error: function (data) {
           alert('提交失败')
-
+          
+          
 
         }
       })
