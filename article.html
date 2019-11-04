@@ -84,7 +84,7 @@
           <div class="form_group">
               <label>您的ID为:</label>
     
-              <input type="text" placeholder="" class="comment_name" name="articleId">
+              <input type="hidden" placeholder="" class="comment_name" name="articleId" value="33">
           </div>
         <div class="form_group">
           <label>用户名：</label>
@@ -134,7 +134,7 @@
         <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
         <!-- 最新评论父级 -->
         <ul class="content_list comment_list" id="latest_commentBox">
-
+          
 
         </ul>
       </div>
@@ -184,12 +184,13 @@
 
   <!-- 文章页面的 js 代码  -->
   <script>
+    $(function(){
+
+      //焦点
     $.ajax({
       url: 'http://47.111.184.55:8888/api/v1/index/attention',
       type: 'get',
       success(data) {
-
-
         var html = template('attentionTpl', data)
         $('#attentionBox').html(html)
       }
@@ -218,20 +219,24 @@
 
       return false;
     })
-    //获取最新评论
-    $.ajax({
+   
+     //最新评论
+  $.ajax({
       url: 'http://47.111.184.55:8888/api/v1/index/latest_comment',
       type: 'get',
       success: function (data) {
         console.log(data);
+        
 
         var html = template('latest_commentTpl', data)
         $('#latest_commentBox').html(html)
+        
       },
       error: function () {
         alert('最新评论获取失败')
       }
     })
+  })
   </script>
 </body>
 
