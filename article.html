@@ -28,23 +28,23 @@
     <div class="menu">
       <div class="menu_collapse fl">
         <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
-        <ul class="level_two">
+        <ul class="level_two" id="levelClass">
           <li class="up"></li>
-          <li><a href="#">最 新</a></li>
+          <!-- <li><a href="#">最 新</a></li>
           <li><a href="#">科 技</a></li>
           <li><a href="#">股 市</a></li>
           <li><a href="#">商 品</a></li>
           <li><a href="#">外 汇</a></li>
-          <li><a href="#">公 司</a></li>
+          <li><a href="#">公 司</a></li> -->
         </ul>
       </div>
-      <ul class="left_menu fl">
-        <li><a href="#">最 新</a></li>
+      <ul class="left_menu fl" id="leftClass">
+        <!-- <li><a href="#">最 新</a></li>
         <li><a href="#">科 技</a></li>
         <li><a href="#">股 市</a></li>
         <li><a href="#">商 品</a></li>
         <li><a href="#">外 汇</a></li>
-        <li><a href="#">公 司</a></li>
+        <li><a href="#">公 司</a></li> -->
       </ul>
       <ul class="right_menu fr">
         <li><a href="#">科技专题</a></li>
@@ -131,14 +131,14 @@
     <div class="right_con setfl">
       <div class="common_wrap">
         <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
-        <ul class="content_list">
-          <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
+        <ul class="content_list" id="parent">
+          <!-- <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
           <li><span class="second">2</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span class="third">3</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span>4</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span>5</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span>6</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><span>7</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+          <li><span>7</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li> -->
         </ul>
       </div>
       <div class="common_wrap">
@@ -210,8 +210,109 @@
   <script src="./js/template-web.js"></script>
 
   <!-- 文章页面的 js 代码  -->
-  <script>
+   <!-- 文章类型模板 -->
+   <script type="text/html" id="classifyTpl">
+    {{each data}}
+    <li><a href="javascript:;">{{$value.name}}</a></li>
+    {{/each}}
+  </script>
+  <script type="text/html" id="classifyTpls">
+    {{each data}}
+    <li><a href="javascript:;">{{$value.name}}</a></li>
+    {{/each}}
+  </script>
 
+  <!-- 文章热门排行模板 -->
+  <script type="text/html" id="rankTpl">
+    {{each data}}
+      <li><span>{{$index+1}}</span><a href="javascript:;">{{$value.title}}</a></li>
+    {{/each}}
+  </script>
+
+  <!-- index 代码 -->
+  <script>
+      // ------- 文章搜索 ----------
+      $(function () {
+      $('.search_btn').on('click', function () {
+        var val = $('.search_txt').val()
+        console.log(val);
+        $.ajax({
+        url: 'http://47.111.184.55:8888/api/v1/index/search',
+        type: 'get',
+        data: val,
+        success: function (data) {
+            console.log(data);
+          },
+          error: function (data) {
+            console.log(data);
+          }
+        })
+      })
+      $('.search_txt').on('keyup', function (e) {
+        if(e.keyCode == 13) {
+          var val = $(this).val()
+          console.log(val);
+          $.ajax({
+            url: 'http://47.111.184.55:8888/api/v1/index/search',
+            type: 'get',
+            data: {
+              key: val
+            },
+            success: function (data) {
+            console.log(data);
+          },
+          error: function (data) {
+            console.log(data);
+          }
+        })
+        }
+      })
+    })
+    </script>
+  <script>
+    // ------- 文章类型 ----------
+   $(function () {
+    $.ajax({
+      url: 'http://47.111.184.55:8888/api/v1/index/category',
+      type: 'get',
+      success: function (data) {
+        console.log(data); 
+        var html = template('classifyTpl', {data: data.data.slice(0,5)})
+        // console.log(html);
+        $('#levelClass').html(html)
+      }
+    })
+    $.ajax({
+      url: 'http://47.111.184.55:8888/api/v1/index/category',
+      success: function (data) {
+        console.log(data); 
+        var html = template('classifyTpls', {data: data.data.slice(0,5)})
+        // console.log(html);
+        $('#leftClass').html(html)
+      }
+    })
+   })
+  </script>
+  <script>
+    // ------- 文章热门排行 -----
+    $(function () {
+      // 发送ajax请求
+      $.ajax({
+        url: 'http://47.111.184.55:8888/api/v1/index/rank',
+        type: 'get',
+        success: function (data) {
+          // console.log(data);
+          // 模板与数据拼接
+          var html = template('rankTpl', data)
+          // console.log(html);
+          //找到父级 把拼接的内容插入父级中
+          $('#parent').html(html)
+          $('#parent li:eq(0) span').addClass('first')
+          $('#parent li:eq(1) span').addClass('second')
+          $('#parent li:eq(2) span').addClass('third')
+        }
+      })
+    })
   </script>
 </body>
 
