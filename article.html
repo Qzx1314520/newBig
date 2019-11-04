@@ -197,6 +197,7 @@
         // 评论下方的最新评论
         $('#latest_commentBoxa').html(html)
         
+        
       },
       error: function () {
         alert('最新评论获取失败')
@@ -212,18 +213,18 @@
       }
     })
 
-    // 发表评论
+    // 发表评论(项目后来标0,但是功能已实现)
     $('#commentForm').on('submit', function () {
       var formData = $(this).serialize()
       // console.log(typeof formData)
-      console.log(formData);
+      
       
       $.ajax({
         url: 'http://47.111.184.55:8888/api/v1/index/post_comment',
         type: 'post',
         data: formData,
         success: function (data) {
-          console.log(data);
+          
         },
         error: function (data) {
           alert('提交失败')
@@ -236,7 +237,7 @@
       return false;
     })
    
-     //最新评论
+     
  
   })
   </script>
