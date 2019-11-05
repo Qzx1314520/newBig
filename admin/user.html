@@ -82,7 +82,7 @@
         $('#usermodifyBox').on('change', '#exampleInputFile', function() {
             var file = this.files[0];
             var imgUrl = URL.createObjectURL(file)
-            console.log(imgUrl);
+                // console.log(imgUrl);
             $('#imgBox').attr('src', imgUrl)
             $('#exampleHidden').val(imgUrl)
 
@@ -96,7 +96,7 @@
                 type: 'get',
                 url: 'http://47.111.184.55:8888/api/v1/admin/user/info',
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                 }
             })
 
