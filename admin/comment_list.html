@@ -36,7 +36,12 @@
 
       <div class="row text-center">
         <ul class="pagination pagination-sm" id="changePage">
-          
+          <!-- <%--分页--%> -->
+          <span style="font-size:14px;">
+              <div class="text-center">
+                  <ul id="pagination-demo" class="pagination-sm"></ul>
+              </div>
+          </span>
         </ul>
       </div>
 
@@ -45,6 +50,7 @@
 
   <script src="js/jquery-1.12.4.min.js"></script>
   <script src="../js/template-web.js"></script>
+  <!-- 分页插件 -->
   <script src="./js/jquery.twbsPagination.js"></script>
   <script type="text/html" id="commentTpl">
     {{each data}}
@@ -62,19 +68,6 @@
       </tr>
     {{/each}}
   </script>
-  <!-- <script type="text/html" id="searchTpl">
-    <li class="page-item first disabled"><a href="javascript:;" class="page-link" onclick="changePage(1)">首页</a></li>
-    {{if page>1}}
-    <li class="page-item prev disabled"><a href="javascript:;" class="page-link"onclick="changePage({{page - 1}})">上一页</a></li>
-    {{/if}}
-    {{each page}}
-    <li class="page-item active"><a href="javascript:;" class="page-link" onclick="changePage({{$value}})">{{$value}}</a></li>
-    {{/each}}
-    {{if page < pages}}
-    <li class="page-item next"><a href="javascript:;" class="page-link" onclick="changePage({{page + 1}})">下一页</a></li>
-    <li class="page-item last"><a href="javascript:;" class="page-link"onclick="changePage({{pages}})">尾页</a></li>
-    {{/if}}
-  </script> -->
   <script>
     // 设置左侧菜单
     $('#release_btn').click(function () {
@@ -88,15 +81,29 @@
       // 展示文章评论列表  搜索文章列表
       $.ajax({
         url: 'http://47.111.184.55:8888/api/v1/admin/comment/search',
+        data: {
+          page: 1,
+          perpage: 3
+        },
         success: function (data) {
           console.log(data);
           var html = template('commentTpl', {data: data});
           $('#commentBox').html(html);
-
-          // var pageHtml = template('searchTpl', {data: data});
-          // $('#changePage').html(pageHtml); 
+          
         }
       })
+
+      //分页
+      $('#pagination-demo').twbsPagination({
+          //total总记录数，就是多少条数据  pages总页数
+          totalPages: 3,
+          visiblePages: 3,
+          first:'首页',
+          last:'末页',
+          prev:'上一页',
+          next:'下一页',
+          href:"?p={{page}}"
+      });
 
       // 删除
       $('#commentBox').on('click', '.delete', function () {
