@@ -82,7 +82,7 @@
         $('#usermodifyBox').on('change', '#exampleInputFile', function() {
             var file = this.files[0];
             var imgUrl = URL.createObjectURL(file)
-            console.log(imgUrl);
+                // console.log(imgUrl);
             $('#imgBox').attr('src', imgUrl)
             $('#exampleHidden').val(imgUrl)
 
@@ -96,7 +96,7 @@
                 type: 'get',
                 url: 'http://47.111.184.55:8888/api/v1/admin/user/info',
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                 }
             })
 
@@ -115,11 +115,8 @@
             $('#usermodifyBox').on('click', '.edit', function() {
                 // console.log(2);
                 $('#usermodifyBox').on('submit', '#userForm', function() {
-                    // 获取表单内容
-                   
-                    var formData = new FormData($('#userForm')[0])
-                     
-                    
+                    // 获取表单内容     
+                    var formData = new FormData($('#userForm')[0])                       
                     $.ajax({
                         type: 'post',
                         url: 'http://47.111.184.55:8888/api/v1/admin/user/edit',
@@ -129,7 +126,7 @@
                         success: function(data) {
                             // 重新刷新页面
                             location.reload()
-                                
+                                // alert('success to edit')
                         }
                     })
                     return false
