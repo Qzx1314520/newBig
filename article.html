@@ -176,6 +176,7 @@
   <script type="text/html" id="latestcommentTpl">
     {{each data}}
         <li>
+          <!-- 截取 -->
           <span>{{$value.author.substring(0,1)}}</span>
           <b><em>{{$value.author}}</em>{{$value.date}}说:</b>
           <strong>{{$value.intro}}</strong>
@@ -189,20 +190,18 @@
       url: 'http://47.111.184.55:8888/api/v1/index/latest_comment',
       type: 'get',
       success: function (data) {
-        console.log(data);
-        
-
+        // console.log(data);
         var html = template('latestcommentTpl', data)
         $('#latest_commentBox').html(html)
         // 评论下方的最新评论
         $('#latest_commentBoxa').html(html)
-        
-        
+           
       },
       error: function () {
         alert('最新评论获取失败')
       }
     })
+
       //焦点
     $.ajax({
       url: 'http://47.111.184.55:8888/api/v1/index/attention',
@@ -216,29 +215,19 @@
     // 发表评论(项目后来标0,但是功能已实现)
     $('#commentForm').on('submit', function () {
       var formData = $(this).serialize()
-      // console.log(typeof formData)
-      
-      
+      // console.log(typeof formData)      
       $.ajax({
         url: 'http://47.111.184.55:8888/api/v1/index/post_comment',
         type: 'post',
         data: formData,
-        success: function (data) {
-          
+        success: function (data) {         
         },
         error: function (data) {
           alert('提交失败')
-          
-          
-
-        }
+          }
       })
-
       return false;
     })
-   
-     
- 
   })
   </script>
 </body>

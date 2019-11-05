@@ -221,8 +221,6 @@ $(function(){
     url:'http://47.111.184.55:8888/api/v1/index/attention',
     type:'get',
     success(data){
-      
-      
       var html=template('attentionTpl',data)
       $('#attentionBox').html(html)
     }
@@ -232,8 +230,6 @@ $(function(){
       url: 'http://47.111.184.55:8888/api/v1/index/latest_comment',
       type: 'get',
       success: function (data) {
-        
-
         var html = template('latest_commentTpl', data)
         $('#latest_commentBox').html(html)
       },
