@@ -200,7 +200,11 @@
     {{each data}}
         <li>
           <span>{{$value.author.substring(0,1)}}</span>
-          <b><em>{{$value.author}}</em>({{$value.date.substring(5,9)}})说:</b>
+          <b>
+            <em>{{$value.author}}</em>
+            
+            ({{$value.date.substring(5,9)}})说:
+          </b>
           <strong>{{$value.intro}}</strong>
         </li>
     {{/each}}
@@ -215,8 +219,9 @@
     {{/each}}
   </script>
 <script>
-$(function(){
+
   //焦点关注
+ 
   $.ajax({
     url:'http://47.111.184.55:8888/api/v1/index/attention',
     type:'get',
@@ -237,7 +242,7 @@ $(function(){
         alert('最新评论获取失败 ')
       }
     })
-})
+
 </script>
 </body>
 
