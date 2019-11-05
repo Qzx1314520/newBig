@@ -74,9 +74,9 @@
   </div>
 
   <div class="header_bar">
-    <form class="search_form">
-      <input type="text" placeholder="请输入搜索内容">
-      <i class="iconfont icon-search"></i>
+    <form class="search_form" id="searchForm">
+      <input type="text" placeholder="请输入搜索内容" name="key" id="searchInput">
+      <a class="iconfont icon-search" href="article_list.html" target="main_frame" id="href"></a>
     </form>
 
     <div class="user_center_link">
@@ -165,8 +165,14 @@
   </script>
 
   <!-- 业务逻辑代码 -->
+  <!-- 模板 -->
+  
   <script>
-
+    // 搜索文章功能
+   $('#searchInput').on('change', function () {
+     var id = $(this).val()
+     $('#href').attr('href',"article_list.html?id="+id)
+   })
   </script>
 </body>
 
