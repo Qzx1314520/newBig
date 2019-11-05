@@ -80,52 +80,39 @@
         下一篇： <a href="#">世界第一个可以玩游戏的马桶、世界上第一个可以玩游戏的茶杯</a>
       </div>
 
-      <form action="" class="comment_form">
+      <form  class="comment_form" id="commentForm">
+          <div class="form_group">
+              
+    
+              <input type="hidden" placeholder="" class="comment_name" name="articleId" value="33">
+          </div>
         <div class="form_group">
           <label>用户名：</label>
-          <input type="text" placeholder="请输入用户名" class="comment_name">
+
+          <input type="text" placeholder="请输入用户名" class="comment_name" name="author">
         </div>
+
         <div class="form_group">
           <label>评论内容：</label>
-          <textarea placeholder="请发表您的评论" class="comment_input"></textarea>
+          <textarea placeholder="请发表您的评论" class="comment_input" name="content"></textarea>
         </div>
+
         <div class="form_group">
-          <input type="submit" name="" value="评 论" class="comment_sub"></div>
+
+          <input type="submit" name="" value="评 论" class="comment_sub">
+          <!-- <input type="hidden" id="articleId"> -->
+        </div>
+
       </form>
 
       <div class="comment_count">
         4条评论
       </div>
-
       <div class="comment_list_con">
-        <div class="comment_detail_list">
-          <div class="person_pic fl">乔</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">段</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">虚</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">王</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
+          <ul class="content_list comment_list" id="latest_commentBoxa">
+
+
+          </ul>
       </div>
     </div>
     <div class="right_con setfl">
@@ -141,53 +128,25 @@
           <li><span>7</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li> -->
         </ul>
       </div>
+
       <div class="common_wrap">
         <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
-        <ul class="content_list comment_list">
-          <li>
-            <span>山</span>
-            <b><em>山治</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>丽</span>
-            <b><em>丽丽</em> 9个月前(08-14)说:9个月前(08-14)说:9个月前(08-14)说:</b>
-            <strong>挺会玩的挺会玩的挺会玩的挺会玩的</strong>
-          </li>
-          <li>
-            <span>R</span>
-            <b><em>Rechael</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>J</span>
-            <b><em>John</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>段</span>
-            <b><em>段正淳</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>乔</span>
-            <b><em>乔峰</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
+        <!-- 最新评论父级 -->
+        <ul class="content_list comment_list" id="latest_commentBox">
+          
+
         </ul>
       </div>
+
       <div class="common_wrap">
         <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-        <ul class="content_list guanzhu_list">
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+        <!-- 焦点关注父元素Ul -->
+        <ul class="content_list guanzhu_list" id="attentionBox">
+
+
         </ul>
       </div>
+
     </div>
   </div>
 
@@ -202,12 +161,18 @@
       <a href="#">友情链接</a>
     </div>
     <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
-    <p>电话：0755-****888 粤ICP备*******8号</p>
+    <p>电话：0755-****888 粤ICP备*******8号.</p>
   </div>
-
+  <!-- 焦点关注模板attentionTpl -->
+  <script type='text/html' id="attentionTpl">
+    {{each data}}
+      <li><a href="javascript:;">{{$value.intro}}</a></li>
+    {{/each}}
+  </script>
 
   <script src="./js/jquery-1.12.4.min.js"></script>
   <script src="./js/template-web.js"></script>
+<<<<<<< HEAD
 
   <!-- 文章页面的 js 代码  -->
    <!-- 文章类型模板 -->
@@ -313,6 +278,65 @@
         }
       })
     })
+=======
+  <!-- 最新评论模板 -->
+  <script type="text/html" id="latestcommentTpl">
+    {{each data}}
+        <li>
+          <!-- 截取 -->
+          <span>{{$value.author.substring(0,1)}}</span>
+          <b><em>{{$value.author}}</em>({{$value.date.substring(5,9)}})说:</b>
+          <strong>{{$value.intro}}</strong>
+        </li>
+    {{/each}}
+  </script>
+  <!-- 文章页面的 js 代码   -->
+  <script>
+    $(function(){
+       $.ajax({
+      url: 'http://47.111.184.55:8888/api/v1/index/latest_comment',
+      type: 'get',
+      success: function (data) {
+        // console.log(data);
+        var html = template('latestcommentTpl', data)
+        $('#latest_commentBox').html(html)
+        // 评论下方的最新评论
+        $('#latest_commentBoxa').html(html)
+           
+      },
+      error: function () {
+        alert('最新评论获取失败')
+      }
+    })
+
+      //焦点
+    $.ajax({
+      url: 'http://47.111.184.55:8888/api/v1/index/attention',
+      type: 'get',
+      success(data) {
+        var html = template('attentionTpl', data)
+        $('#attentionBox').html(html)
+      }
+    })
+
+    // 发表评论(项目后来标0,但是功能已实现)
+    $('#commentForm').on('submit', function () {
+      var formData = $(this).serialize()
+      // console.log(typeof formData)      
+      $.ajax({
+        url: 'http://47.111.184.55:8888/api/v1/index/post_comment',
+        type: 'post',
+        data: formData,
+        success: function (data) {         
+        },
+        error: function (data) {
+          alert('提交失败')
+          }
+      })
+      return false;
+    })
+  })
+>>>>>>> feature/1105-list
   </script>
 </body>
 

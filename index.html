@@ -159,49 +159,18 @@
       </div>
       <div class="common_wrap">
         <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
-        <ul class="content_list comment_list">
-          <li>
-            <span>山</span>
-            <b><em>山治</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>丽</span>
-            <b><em>丽丽</em> 9个月前(08-14)说:9个月前(08-14)说:9个月前(08-14)说:</b>
-            <strong>挺会玩的挺会玩的挺会玩的挺会玩的</strong>
-          </li>
-          <li>
-            <span>R</span>
-            <b><em>Rechael</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>J</span>
-            <b><em>John</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>段</span>
-            <b><em>段正淳</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>乔</span>
-            <b><em>乔峰</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
+        <!-- 最新评论父级 -->
+        <ul class="content_list comment_list" id="latest_commentBox">
+
+
         </ul>
       </div>
       <div class="common_wrap">
         <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-        <ul class="content_list guanzhu_list">
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+        <!-- 焦点关注父元素Ul -->
+        <ul class="content_list guanzhu_list" id="attentionBox">
+          
+
         </ul>
       </div>
     </div>
@@ -251,6 +220,7 @@
   </script>
 
   <!-- index 代码 -->
+<<<<<<< HEAD
   <script>
       // ------- 文章搜索 ----------
       $(function () {
@@ -353,6 +323,58 @@
   </script>
 
 
+=======
+
+   <!-- 最新评论模板 -->
+   <script type="text/html" id="latest_commentTpl">
+    {{each data}}
+        <li>
+          <span>{{$value.author.substring(0,1)}}</span>
+          <b>
+            <em>{{$value.author}}</em>
+            
+            ({{$value.date.substring(5,9)}})说:
+          </b>
+          <strong>{{$value.intro}}</strong>
+        </li>
+    {{/each}}
+  </script>
+<script src="./js/jquery-1.12.4.min.js"></script>
+<script src="./js/template-web.js"></script>
+
+  <!-- 焦点关注模板attentionTpl -->
+  <script type='text/html' id="attentionTpl">
+    {{each data}}
+      <li><a href="javascript:;">{{$value.intro}}</a></li>
+    {{/each}}
+  </script>
+<script>
+
+  //焦点关注
+ 
+  $.ajax({
+    url:'http://47.111.184.55:8888/api/v1/index/attention',
+    type:'get',
+    success(data){
+      var html=template('attentionTpl',data)
+      $('#attentionBox').html(html)
+    }
+  })
+  //最新评论
+  $.ajax({
+      url: 'http://47.111.184.55:8888/api/v1/index/latest_comment',
+      type: 'get',
+      success: function (data) {
+        var html = template('latest_commentTpl', data)
+        $('#latest_commentBox').html(html)
+      },
+      error: function () {
+        alert('最新评论获取失败 ')
+      }
+    })
+
+</script>
+>>>>>>> feature/1105-list
 </body>
 
 </html>
