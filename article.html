@@ -172,7 +172,6 @@
 
   <script src="./js/jquery-1.12.4.min.js"></script>
   <script src="./js/template-web.js"></script>
-<<<<<<< HEAD
 
   <!-- 文章页面的 js 代码  -->
    <!-- 文章类型模板 -->
@@ -193,45 +192,55 @@
       <li><span>{{$index+1}}</span><a href="javascript:;">{{$value.title}}</a></li>
     {{/each}}
   </script>
-
+<!-- 最新评论模板 -->
+  <script type="text/html" id="latestcommentTpl">
+    {{each data}}
+        <li>
+          <!-- 截取 -->
+          <span>{{$value.author.substring(0,1)}}</span>
+          <b><em>{{$value.author}}</em>({{$value.date.substring(5,9)}})说:</b>
+          <strong>{{$value.intro}}</strong>
+        </li>
+    {{/each}}
+  </script>
   <!-- index 代码 -->
   <script>
       // ------- 文章搜索 ----------
       $(function () {
-      $('.search_btn').on('click', function () {
-        var val = $('.search_txt').val()
-        console.log(val);
-        $.ajax({
-        url: 'http://47.111.184.55:8888/api/v1/index/search',
-        type: 'get',
-        data: val,
-        success: function (data) {
-            console.log(data);
-          },
-          error: function (data) {
-            console.log(data);
-          }
-        })
-      })
-      $('.search_txt').on('keyup', function (e) {
-        if(e.keyCode == 13) {
-          var val = $(this).val()
+        $('.search_btn').on('click', function () {
+          var val = $('.search_txt').val()
           console.log(val);
           $.ajax({
-            url: 'http://47.111.184.55:8888/api/v1/index/search',
-            type: 'get',
-            data: {
-              key: val
+          url: 'http://47.111.184.55:8888/api/v1/index/search',
+          type: 'get',
+          data: val,
+          success: function (data) {
+              console.log(data);
             },
-            success: function (data) {
-            console.log(data);
-          },
-          error: function (data) {
-            console.log(data);
+            error: function (data) {
+              console.log(data);
             }
           })
-        }
-      })
+        })
+        $('.search_txt').on('keyup', function (e) {
+          if(e.keyCode == 13) {
+            var val = $(this).val()
+            console.log(val);
+            $.ajax({
+              url: 'http://47.111.184.55:8888/api/v1/index/search',
+              type: 'get',
+              data: {
+                key: val
+              },
+              success: function (data) {
+              console.log(data);
+            },
+            error: function (data) {
+              console.log(data);
+              }
+            })
+          }
+        })
     })
     </script>
   <script>
@@ -278,19 +287,8 @@
         }
       })
     })
-=======
-  <!-- 最新评论模板 -->
-  <script type="text/html" id="latestcommentTpl">
-    {{each data}}
-        <li>
-          <!-- 截取 -->
-          <span>{{$value.author.substring(0,1)}}</span>
-          <b><em>{{$value.author}}</em>({{$value.date.substring(5,9)}})说:</b>
-          <strong>{{$value.intro}}</strong>
-        </li>
-    {{/each}}
   </script>
-  <!-- 文章页面的 js 代码   -->
+  // <!-- 文章页面的 js 代码   -->
   <script>
     $(function(){
        $.ajax({
@@ -336,7 +334,6 @@
       return false;
     })
   })
->>>>>>> feature/1105-list
   </script>
 </body>
 
