@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">用户名称：</label>
                 <div class="col-sm-4">
-                    <input type="text" name="username" class="form-control username" id="inputEmail3" value="{{username}}">
+                    <input type="text" name="username" class="form-control username" id="inputEmail3" value="{{data.username}}">
                 </div>
             </div>
             <div class="form-group">
@@ -116,7 +116,13 @@
                 // console.log(2);
                 $('#usermodifyBox').on('submit', '#userForm', function() {
                     // 获取表单内容     
-                    var formData = new FormData($('#userForm')[0])                       
+                    var formData = new FormData($('#userForm')[0])
+                    // console.log(formData)
+                    formData.forEach((key, value) => {
+                          console.log(value, key);
+
+                   })
+                      
                     $.ajax({
                         type: 'post',
                         url: 'http://47.111.184.55:8888/api/v1/admin/user/edit',
