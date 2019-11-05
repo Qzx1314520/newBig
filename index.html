@@ -199,7 +199,7 @@
    <script type="text/html" id="latest_commentTpl">
     {{each data}}
         <li>
-          <span>{{$value.author}}</span>
+          <span>{{$value.author.substring(0,1)}}</span>
           <b><em>{{$value.author}}</em>{{$value.date}}说:</b>
           <strong>{{$value.intro}}</strong>
         </li>
